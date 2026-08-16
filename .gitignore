@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.mbtiles
+*.tpkx
+*.tif
+*.tiff
+*.png
+*.jpg
+*.jpeg
+!docs/images/*.png
+!docs/images/*.jpg
+*.log
+.DS_Store
+Thumbs.db
