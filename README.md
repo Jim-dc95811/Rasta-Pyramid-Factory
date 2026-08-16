@@ -4,6 +4,8 @@
 
 **Turn giant raster images into smooth multiscale tile pyramids without manually operating QGIS.**
 
+![System architecture](https://raw.githubusercontent.com/Jim-dc95811/Map-Fountain/main/docs/ChatGPT%20Image%20Aug%2016%2C%202026%2C%2007_11_25%20PM.png)
+
 Rasta Pyramid Factory is a Windows-first raster manufacturing tool built around **QGIS 3.44.9 as a headless rendering engine**. Give it a very large flat image or a genuinely georeferenced raster and it manufactures a verified raster pyramid as **MBTiles, TPKX, or both**.
 
 It is not limited to maps. The pixels may represent a city panorama, aerial imagery, a historical scan, drone orthomosaic, scientific raster, artwork, or any other raster QGIS can render.
