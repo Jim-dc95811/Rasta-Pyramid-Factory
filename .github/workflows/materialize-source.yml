@@ -1,0 +1,63 @@
+name: Materialize exact source
+
+on:
+  push:
+    paths:
+      - 'source_payload/**'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Decompress and verify exact Python sources
+        shell: python
+        run: |
+          import gzip
+          import hashlib
+          from pathlib import Path
+
+          jobs = [
+              (
+                  Path('source_payload/RASTA_PIPELINE.py.gz'),
+                  Path('Rasta Pyramid Factory/System Files/RASTA_PIPELINE.py'),
+                  'bbc6f7f44ab7d29f150c5e18978375176b7f774ed90d031a66ce4aa5cca0d1bb',
+                  26050,
+              ),
+              (
+                  Path('source_payload/MBTiles_to_TPKX_v0_1_0.py.gz'),
+                  Path('Rasta Pyramid Factory/System Files/MBTiles_to_TPKX_v0_1_0.py'),
+                  '7e685b396bf2a6a5ca89fdb710b2ae2e25f8e66014e9162408f166b01d78fc97',
+                  21318,
+              ),
+          ]
+
+          for packed, destination, expected_sha, expected_size in jobs:
+              raw = gzip.decompress(packed.read_bytes())
+              actual_sha = hashlib.sha256(raw).hexdigest()
+              if len(raw) != expected_size:
+                  raise SystemExit(f'{destination}: size {len(raw)} != {expected_size}')
+              if actual_sha != expected_sha:
+                  raise SystemExit(f'{destination}: SHA-256 {actual_sha} != {expected_sha}')
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              destination.write_bytes(raw)
+              print(f'VERIFIED {destination} {len(raw)} bytes {actual_sha}')
+
+      - name: Commit exact sources and remove bootstrap payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "Rasta Pyramid Factory/System Files/RASTA_PIPELINE.py" \
+                  "Rasta Pyramid Factory/System Files/MBTiles_to_TPKX_v0_1_0.py"
+          git rm -r source_payload .github/workflows/materialize-source.yml
+          git commit -m "Materialize exact Rasta source"
+          git push
