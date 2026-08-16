@@ -4,32 +4,65 @@
 
 **Automated v0.1.2 architecture: LIVE-PROVEN.**
 
-**v0.1.3 TEST: LIVE-PROVEN** for automatic flat-image manufacture, Atlantic synthetic parking, verified TPKX publication, and ArcGIS Earth display.
+**v0.1.3 TEST: LIVE-PROVEN** for automatic flat-image manufacture, Atlantic synthetic parking, long-stage heartbeat, verified TPKX publication, and ArcGIS Earth display.
+
+The automated path has now crossed gigapixel-class city imagery:
+
+- ✅ 63,000 × 18,589 / ~1.17-billion-pixel London JPEG
+- ✅ 62,141 × 14,606 / ~908-million-pixel Barcelona JPEG
+- ✅ 20+ minute long-build heartbeat observed live
+- ✅ deep-navigation behavior accepted in ArcGIS Earth
 
 ## Remaining v0.1.3 hardening gates
 
 1. Test cancellation during raster preparation and QGIS rendering.
-2. Test MBTiles-only output.
-3. Test Both output.
+2. Test MBTiles-only output directly in the Rasta GUI.
+3. Test Both output directly in the Rasta GUI.
 4. Exercise at least one genuinely georeferenced raster through AUTO mode.
 5. Exercise a very large TIFF/BigTIFF source through the automatic path.
-6. Confirm long-stage heartbeat behavior during a deliberately slow run.
+6. Add conservative disk-space preflight before truly enormous staging jobs.
+
+## Source-screening rule for demonstrations
+
+Do not recommend sources by download/file size alone.
+
+Before a source is presented as a serious Rasta demo candidate, verify:
+
+- exact width × height;
+- total pixel count;
+- daylight / recognizable detail;
+- scene density;
+- sharpness across the frame;
+- original-file availability;
+- source format/compression;
+- reuse rights.
+
+For visual “hawk dive” demonstrations, dense daylight cityscapes are especially effective because detail is distributed across the frame.
 
 ## Near-term release candidates
 
 - automatic conservative disk-space preflight for giant staging rasters and output products;
 - smarter automatic max-zoom recommendation based on actual source pixel scale and useful oversampling policy;
 - optional JPEG tile output for photographic sources where size matters more than lossless PNG;
-- show source pixel type, band count, and georeferencing summary in an Advanced information panel;
+- show source pixel type, band count, compression, and georeferencing summary in an Advanced information panel;
+- show a rough output-size warning based on pixel dimensions / tile count rather than source megabytes;
 - controlled tests with BigTIFF, GeoTIFF mosaics, historical scans, scientific rasters, and drone imagery;
-- optional command-line / batch mode after the GUI baseline is accepted;
-- viewer demonstrations beyond ArcGIS Earth for MBTiles consumers.
+- optional command-line / batch mode after the GUI baseline is accepted.
+
+## Viewer / deployment demonstrations
+
+Rasta is not tied to ArcGIS Earth, and MBTiles remains a first-class output.
+
+A downstream Offline GeoStack experiment has now proven that large MBTiles can be served over local HTTPS WMTS through Android USB tether into ArcGIS Earth Mobile. The large Lago panorama displayed smoothly on mobile.
+
+This is useful evidence that Rasta’s pyramid products can feed more than one runtime path, but the Map Fountain transport remains outside Rasta’s core manufacturing responsibility.
 
 ## Public / community
 
-- Maintain the dedicated `Rasta-Pyramid-Factory` GitHub repository as the project’s living technical and plain-language record.
-- Publish the Montreal overview/deep-zoom evidence pair.
-- Publish a short screen recording showing one giant source becoming a multiscale pyramid.
+- Maintain the dedicated `Rasta-Pyramid-Factory` repository as the living technical and plain-language record.
+- Preserve the Montreal and Frankfurt evidence already published.
+- Add the gigapixel London / Barcelona results to demonstrations and acceptance material.
+- Publish a short screen recording showing whole-scene → deep-detail navigation.
 - Document performance comparison between direct giant-PNG random access and staged tiled-raster intake.
 - Keep the relationship to Offline GeoStack clear without making either project depend on the other.
 
@@ -42,4 +75,5 @@
 - tying Rasta to a single viewer;
 - rewriting the proven TPKX converter without a verified defect;
 - exposing operator choices that automation can make safely;
-- displaying fake progress percentages.
+- displaying fake progress percentages;
+- claiming that source file megabytes predict finished pyramid size.
