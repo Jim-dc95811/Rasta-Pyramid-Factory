@@ -10,6 +10,8 @@ It is not limited to maps. The pixels may represent a city panorama, aerial imag
 
 > **Slice. Dice. Present.**
 
+> **See the whole scene like a hawk. Dive into any detail that catches your eye.**
+
 ![Rasta Pyramid Factory v0.1.3 live proof](docs/images/rasta_v0_1_3_live_proof.jpg)
 
 ## Status
@@ -21,6 +23,9 @@ It is not limited to maps. The pixels may represent a city panorama, aerial imag
 | Headless QGIS 3.44.9 tile-pyramid engine | ✅ **LIVE-PROVEN** |
 | Frozen MBTiles → Compact Cache V2 / TPKX converter | ✅ **LIVE-PROVEN** |
 | Rasta v0.1.3 automatic Atlantic parking + heartbeat | ✅ **LIVE-PROVEN** |
+| 63,000 × 18,589 / 1.17-billion-pixel JPEG | ✅ **LIVE-PROVEN** |
+| 62,141 × 14,606 Barcelona deep-navigation run | ✅ **LIVE-PROVEN** |
+| Long-stage heartbeat during 20+ minute builds | ✅ **LIVE-PROVEN** |
 
 ## What the operator does
 
@@ -61,7 +66,25 @@ MBTiles / TPKX / Both
 
 The original source raster is not modified.
 
-## First automated live proof — Montreal
+## Why the pyramid feels different
+
+A few manually chosen image layers can imitate several destination scales, but they do not preserve the journey between those scales.
+
+Rasta manufactures a true multiscale raster pyramid so the viewer can move through neighboring resolution levels continuously. The operator does not choose a detail layer; the viewer requests the appropriate tiles while the operator moves.
+
+That produces the live-observed effect that motivated the project:
+
+```text
+whole scene
+→ something catches the eye
+→ dive toward it
+→ more real source detail appears
+→ keep moving without losing visual context
+```
+
+The pyramid does not invent detail. It makes the detail already present in the source practical to explore.
+
+## Automated live proof — Montreal
 
 On 2026-08-16, Rasta v0.1.2 automatically processed the **29,684 × 7,620** `Montreal_Skyline_from_Mont_Royal_raw.png` source and produced:
 
@@ -75,17 +98,79 @@ The overview and deep zoom below are the same manufactured raster pyramid: whole
 
 ![Montreal overview and deep-zoom live proof](docs/images/montreal_live_proof.jpg)
 
-That is the point of a raster pyramid: a viewer does not need to treat the source as one monolithic image. It requests only the resolution level and tile region needed for the current view.
+## Rasta v0.1.3 automated Frankfurt proof
 
-## Second automated live proof — Frankfurt
-
-On 2026-08-16, **Rasta v0.1.3 TEST** processed an ordinary **8,003 × 5,622 JPEG** city image with no manual georeferencing controls exposed to the operator. Rasta automatically placed the synthetic display space at its fixed Atlantic parking anchor east of Florida, manufactured and verified the raster pyramid, published the TPKX, and ArcGIS Earth rendered the result correctly.
-
-The ArcGIS Earth status bar shows the synthetic placement near **30°N, 80°W**, confirming that the v0.1.3 parking-anchor change is working on the live target.
+An ordinary **8,003 × 5,622 JPEG** was automatically detected as a flat image, parked at the fixed synthetic Atlantic display anchor near **30°N, 80°W**, manufactured, verified, published, and rendered correctly in ArcGIS Earth.
 
 ![Rasta v0.1.3 Frankfurt live proof](docs/images/rasta_v0_1_3_live_proof.jpg)
 
-This confirms that v0.1.3 is **LIVE-PROVEN** for automatic flat-image placement, manufacture, verification, publication, and ArcGIS Earth display.
+This moved v0.1.3 itself to **LIVE-PROVEN**.
+
+## Gigapixel-class live proof — London
+
+Rasta v0.1.3 processed `Kings_reach_panorama_2.jpg`:
+
+- **63,000 × 18,589 pixels**
+- approximately **1.17 billion source pixels**
+- **67,619 final raster tiles**
+- Z0–Z18
+- **30 bundles**
+- elapsed: **0:23:07**
+- Windows File Explorer TPKX size: **1,949,149 KB**
+- ArcGIS Earth: **PASS**
+
+The overview reads as a normal London panorama. A deep dive toward the London Eye resolves individual people inside the observation pods.
+
+That is the project’s central visual point: **detail that is effectively out of sight at overview scale remains available everywhere the source pixels contain it.**
+
+## Distributed-detail proof — Barcelona
+
+Rasta v0.1.3 processed `Tibidabo.jpg`:
+
+- **62,141 × 14,606 pixels**
+- approximately **908 million source pixels**
+- **52,482 final tiles**
+- Z0–Z18
+- **30 bundles**
+- elapsed: **0:20:40**
+- ArcGIS Earth: **PASS**
+
+Barcelona produced an especially strong “hawk” effect because useful detail is spread across the whole scene. The operator can move from city-wide context into buildings, rooftops, parking lots, cars, construction equipment, balconies, trees, and road geometry in many different directions.
+
+## Tower Bridge proof
+
+A **15,287 × 7,643 JPEG** produced:
+
+- **6,976 tiles**
+- Z0–Z18
+- **22 bundles**
+- elapsed: **0:02:18**
+- Windows File Explorer TPKX size: **294,910 KB**
+- ArcGIS Earth: **PASS**
+
+The operator could move from the full bridge scene into small river/shore detail without manually changing image layers.
+
+## Output size: do not use source megabytes as the predictor
+
+A source file’s disk size and its pixel count are different things.
+
+A highly compressed JPEG can contain far more pixels than a much larger TIFF. Rasta output size is driven more strongly by:
+
+1. source pixel dimensions / total pixel count;
+2. requested pyramid zoom range;
+3. scene complexity and compressibility;
+4. tile encoding.
+
+Live example:
+
+- a roughly 100 MB-class London JPEG contained about **1.17 billion pixels** and produced a **1,949,149 KB** TPKX;
+- a roughly 288 MB Pittsburgh TIFF inspected at only **8,688 × 5,792 pixels** — about 50 million pixels.
+
+So:
+
+> **Do not judge the source by how many megabytes the file weighs. Judge it by what pixels are actually inside.**
+
+See [Gigapixel proof + output-size guidance](docs/GIGAPIXEL_AND_OUTPUT_SIZE.md).
 
 ## Synthetic placement for ordinary photographs
 
@@ -94,11 +179,19 @@ A normal photograph has no honest geographic location. Rasta therefore labels it
 The internal rule remains reproducible:
 
 - default scale: **1 source pixel = 1 projected meter**;
-- CRS used for the synthetic working raster: **EPSG:3857**;
-- v0.1.3 parks flat images at a fixed synthetic anchor near **30°N, 80°W**, in the Atlantic east of Florida, instead of lon/lat 0,0 off Africa;
+- synthetic working CRS: **EPSG:3857**;
+- v0.1.3 parks flat images at a fixed synthetic anchor near **30°N, 80°W**, in the Atlantic east of Florida;
 - the operator does not choose or edit this placement.
 
 Placement has no effect on the source pixels or pyramid detail. It simply gives GIS tile machinery a deterministic projected rectangle to work with.
+
+## Relationship to ArcGIS Earth Mobile / Map Fountain
+
+Rasta itself remains a raster-manufacturing project, not a viewer project.
+
+However, its **MBTiles output is a first-class product**. During Offline GeoStack development on 2026-08-16, large MBTiles were live-served over a private USB-tether HTTPS WMTS path into ArcGIS Earth Mobile. A large Lago panorama displayed smoothly on Android.
+
+That downstream proof reinforces the reason Rasta exposes MBTiles separately from TPKX: the same manufactured pyramid can feed different runtime ecosystems.
 
 ## Requirements
 
@@ -114,6 +207,7 @@ The normal GUI does not require the operator to open QGIS Desktop. Rasta launche
 - [Operator workflow](docs/OPERATOR_WORKFLOW.md)
 - [Technical architecture](docs/TECHNICAL_ARCHITECTURE.md)
 - [Live acceptance record](docs/ACCEPTANCE_RECORD.md)
+- [Gigapixel + output-size guidance](docs/GIGAPIXEL_AND_OUTPUT_SIZE.md)
 - [AI / maintainer restart note](docs/AI_CONTINUITY_RESTART_NOTE.md)
 - [Roadmap](ROADMAP.md)
 - [Changelog](CHANGELOG.md)
