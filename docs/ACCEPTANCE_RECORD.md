@@ -90,6 +90,103 @@ Observed v0.1.3 behavior:
 Evidence image:
 - `docs/images/rasta_v0_1_3_live_proof.jpg`
 
-This moves **v0.1.3 TEST** from BUILT/SELF-TESTED to **LIVE-PROVEN** for automatic synthetic placement, manufacture, verification, publication, and ArcGIS Earth display.
+This moved **v0.1.3 TEST** from BUILT/SELF-TESTED to **LIVE-PROVEN** for automatic synthetic placement, manufacture, verification, publication, and ArcGIS Earth display.
 
-The remaining release-hardening work is separate from this acceptance result: cancellation testing, MBTiles-only/Both output testing, disk-space preflight, and broader source-format coverage.
+## Tower Bridge automated proof — 2026-08-16
+
+**Status: LIVE-PROVEN**
+
+Source:
+- `Tower_Bridge_from_Shad_Thames.jpg`
+- **15,287 × 7,643 pixels**
+- ordinary JPEG
+
+Observed result:
+- **6,976 tiles**
+- **Z0–Z18**
+- **22 bundles**
+- elapsed: **0:02:18**
+- Windows File Explorer TPKX size: **294,910 KB**
+- ArcGIS Earth full-scene display: **PASS**
+- ArcGIS Earth deep river/shore detail: **PASS**
+
+The viewer preserved continuous navigation from the whole bridge scene into small details without manual resolution-layer switching.
+
+## First gigapixel-class automated proof — Kings Reach Panorama 2 — 2026-08-16
+
+**Status: LIVE-PROVEN**
+
+Source:
+- `Kings_reach_panorama_2.jpg`
+- **63,000 × 18,589 pixels**
+- approximately **1.17 billion source pixels**
+- ordinary JPEG
+
+Observed result:
+- **67,619 tiles**
+- **Z0–Z18**
+- **30 bundles**
+- elapsed: **0:23:07**
+- Windows File Explorer TPKX size: **1,949,149 KB**
+- ArcGIS Earth overview: **PASS**
+- ArcGIS Earth deep navigation: **PASS**
+
+Human-observed detail result:
+- the London Eye is a small feature in the overview;
+- after diving through the pyramid, individual people were visible inside observation pods.
+
+This is the first automated **gigapixel-class** Rasta acceptance specimen.
+
+## Barcelona / Tibidabo distributed-detail proof — 2026-08-16
+
+**Status: LIVE-PROVEN**
+
+Source:
+- `Tibidabo.jpg`
+- **62,141 × 14,606 pixels**
+- approximately **908 million source pixels**
+- ordinary JPEG
+
+Observed result:
+- **52,482 tiles**
+- **Z0–Z18**
+- **30 bundles**
+- elapsed: **0:20:40**
+- ArcGIS Earth overview: **PASS**
+- ArcGIS Earth deep navigation: **PASS**
+
+Human-observed detail result:
+- detail remained useful across many different directions in the frame;
+- buildings, roofs, cars, parking areas, construction equipment, balconies, trees, and road geometry emerged during deliberate navigation.
+
+This specimen is especially valuable because the deep-detail effect is not dependent on one famous landmark; useful source detail is distributed across the city.
+
+## Long-stage heartbeat acceptance
+
+**Status: LIVE-PROVEN**
+
+The 20+ minute Kings Reach / Barcelona manufacturing runs confirmed that the v0.1.3 GUI heartbeat and elapsed-time reporting remain visibly active during long QGIS work. The operator can distinguish an active long build from a frozen application.
+
+QGIS may report internal work/metatile counts that are not the final raster-tile count. Future UI wording should continue to distinguish QGIS work units from final tile counts rather than presenting them as the same metric.
+
+## Output-size lesson from live specimens
+
+**Status: LIVE-OBSERVED / DOCUMENTED**
+
+Source file size is not a reliable predictor of finished pyramid size.
+
+- A roughly 100 MB-class Kings Reach JPEG contained about 1.17 billion pixels and produced a **1,949,149 KB** TPKX.
+- A roughly 288 MB Pittsburgh TIFF inspected at only **8,688 × 5,792 pixels** — about 50 million pixels.
+
+For source screening and rough planning, use pixel dimensions / total pixel count before source-file megabytes.
+
+## Remaining release-hardening work
+
+The following remain separate from the live acceptance results above:
+
+- cancellation testing;
+- Rasta GUI MBTiles-only output testing;
+- Rasta GUI Both-output testing;
+- genuinely georeferenced AUTO-mode specimen;
+- very large TIFF/BigTIFF automatic specimen;
+- conservative disk-space preflight.
