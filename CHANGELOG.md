@@ -1,5 +1,51 @@
 # Changelog
 
+## 2026-08-16 — gigapixel / deep-navigation acceptance expansion
+
+Rasta v0.1.3 moved well beyond the initial Frankfurt acceptance and crossed multiple large city-image workloads.
+
+### Tower Bridge
+
+- source: **15,287 × 7,643 JPEG**;
+- **6,976 tiles**;
+- Z0–Z18;
+- **22 bundles**;
+- elapsed **0:02:18**;
+- Windows File Explorer TPKX size **294,910 KB**;
+- ArcGIS Earth **PASS**.
+
+### Kings Reach Panorama 2 — first gigapixel-class run
+
+- source: **63,000 × 18,589 JPEG**;
+- approximately **1.17 billion source pixels**;
+- **67,619 tiles**;
+- Z0–Z18;
+- **30 bundles**;
+- elapsed **0:23:07**;
+- Windows File Explorer TPKX size **1,949,149 KB**;
+- ArcGIS Earth **PASS**;
+- deep navigation to the London Eye resolved individual people inside observation pods.
+
+### Tibidabo / Barcelona
+
+- source: **62,141 × 14,606 JPEG**;
+- approximately **908 million source pixels**;
+- **52,482 tiles**;
+- Z0–Z18;
+- **30 bundles**;
+- elapsed **0:20:40**;
+- ArcGIS Earth **PASS**;
+- distributed detail across the city produced strong whole-city → block/building/vehicle navigation.
+
+### Lessons frozen into documentation
+
+- source file size is not a reliable predictor of Rasta output size;
+- pixel dimensions / total pixels are the better first screening metric;
+- compressed photographic JPEG can be small on disk while containing enormous image payload;
+- the proven PNG pyramid can expand heavily from a highly compressed JPEG source;
+- long-stage heartbeat/status behavior is now live-observed on 20+ minute builds;
+- dense daylight cityscapes are stronger deep-detail demonstration sources than darkness-heavy scenes.
+
 ## v0.1.3 TEST — 2026-08-16
 
 - LIVE-PROVEN on an 8,003 × 5,622 Frankfurt city JPEG: automatic flat-image detection, fixed Atlantic parking near 30°N/80°W, verified TPKX publication, and ArcGIS Earth PASS.
