@@ -10,7 +10,7 @@ It is not limited to maps. The pixels may represent a city panorama, aerial imag
 
 > **Slice. Dice. Present.**
 
-![Rasta v0.1.2 automated completion](docs/images/rasta_v0_1_2_complete.png)
+![Rasta Pyramid Factory v0.1.3 live proof](docs/images/rasta_v0_1_3_live_proof.jpg)
 
 ## Status
 
@@ -20,7 +20,7 @@ It is not limited to maps. The pixels may represent a city panorama, aerial imag
 | Automated Rasta v0.1.2 giant PNG → TPKX | ✅ **LIVE-PROVEN** |
 | Headless QGIS 3.44.9 tile-pyramid engine | ✅ **LIVE-PROVEN** |
 | Frozen MBTiles → Compact Cache V2 / TPKX converter | ✅ **LIVE-PROVEN** |
-| Rasta v0.1.3 Florida synthetic parking + heartbeat | ✅ **LIVE-PROVEN** |
+| Rasta v0.1.3 automatic Atlantic parking + heartbeat | ✅ **LIVE-PROVEN** |
 
 ## What the operator does
 
@@ -71,11 +71,9 @@ On 2026-08-16, Rasta v0.1.2 automatically processed the **29,684 × 7,620** `Mon
 - elapsed: **0:05:04**
 - ArcGIS Earth: **PASS**
 
-The overview image and deep zoom below are the same manufactured raster pyramid.
+The overview and deep zoom below are the same manufactured raster pyramid: whole skyline at one scale, then streets, vehicles, roofs, and windows emerging as the viewer moves down the pyramid.
 
-![Montreal panorama overview in ArcGIS Earth](docs/images/montreal_arcgis_earth_overview.png)
-
-![Montreal deep zoom in ArcGIS Earth](docs/images/montreal_arcgis_earth_deep_zoom.png)
+![Montreal overview and deep-zoom live proof](docs/images/montreal_live_proof.jpg)
 
 That is the point of a raster pyramid: a viewer does not need to treat the source as one monolithic image. It requests only the resolution level and tile region needed for the current view.
 
@@ -85,9 +83,7 @@ On 2026-08-16, **Rasta v0.1.3 TEST** processed an ordinary **8,003 × 5,622 JPEG
 
 The ArcGIS Earth status bar shows the synthetic placement near **30°N, 80°W**, confirming that the v0.1.3 parking-anchor change is working on the live target.
 
-![Rasta v0.1.3 Frankfurt completion](docs/images/rasta_v0_1_3_frankfurt_complete.png)
-
-![Frankfurt raster pyramid in ArcGIS Earth](docs/images/frankfurt_arcgis_earth.png)
+![Rasta v0.1.3 Frankfurt live proof](docs/images/rasta_v0_1_3_live_proof.jpg)
 
 This confirms that v0.1.3 is **LIVE-PROVEN** for automatic flat-image placement, manufacture, verification, publication, and ArcGIS Earth display.
 
