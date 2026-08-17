@@ -6,7 +6,7 @@
 
 **v0.1.3 TEST: LIVE-PROVEN** for automatic flat-image manufacture, Atlantic synthetic parking, long-stage heartbeat, verified TPKX publication, and ArcGIS Earth display.
 
-The automated path has now crossed gigapixel-class city imagery:
+The automated path has crossed gigapixel-class city imagery:
 
 - ✅ 63,000 × 18,589 / ~1.17-billion-pixel London JPEG
 - ✅ 62,141 × 14,606 / ~908-million-pixel Barcelona JPEG
@@ -51,20 +51,33 @@ For visual “hawk dive” demonstrations, dense daylight cityscapes are especia
 
 ## Viewer / deployment demonstrations
 
-Rasta is not tied to ArcGIS Earth, and MBTiles remains a first-class output.
+Rasta is a manufacturing project. It produces native raster pyramids as **MBTiles, TPKX, or Both** and does not own the field delivery hardware.
 
-A downstream Offline GeoStack experiment has now proven that large MBTiles can be served over local HTTPS WMTS through Android USB tether into ArcGIS Earth Mobile. The large Lago panorama displayed smoothly on mobile.
+The current downstream Map Fountain architecture is router-only and has been LIVE-PROVEN on Windows ArcGIS Earth:
 
-This is useful evidence that Rasta’s pyramid products can feed more than one runtime path, but the Map Fountain transport remains outside Rasta’s core manufacturing responsibility.
+```text
+Rasta / Factory native TPKX
+→ USB SSD
+→ GL.iNet Flint 2
+→ Samba / SMB
+→ private Wi-Fi
+→ ArcGIS Earth Windows
+```
+
+A production-scale native TPKX remained on the router-attached SSD while ArcGIS Earth opened and rendered it over Wi-Fi.
+
+That proof reinforces Rasta's core design: manufacture clean native products once; do not force the field appliance to understand or rerender them.
+
+**ArcGIS Earth Mobile on the router-only architecture is a Map Fountain acceptance problem, not a Rasta manufacturing problem.**
 
 ## Public / community
 
 - Maintain the dedicated `Rasta-Pyramid-Factory` repository as the living technical and plain-language record.
-- Preserve the Montreal and Frankfurt evidence already published.
-- Add the gigapixel London / Barcelona results to demonstrations and acceptance material.
+- Keep the canonical Factory / PC / Android router-only flowchart at the top of the repository.
+- Preserve the Montreal, Frankfurt, London, Barcelona, and Tower Bridge evidence.
 - Publish a short screen recording showing whole-scene → deep-detail navigation.
-- Document performance comparison between direct giant-PNG random access and staged tiled-raster intake.
-- Keep the relationship to Offline GeoStack clear without making either project depend on the other.
+- Document performance comparison between direct giant-image random access and staged tiled-raster intake.
+- Keep the relationship to Offline GeoStack and Map Fountain clear without making Rasta depend on either runtime architecture.
 
 ## Non-goals
 
@@ -73,6 +86,7 @@ This is useful evidence that Rasta’s pyramid products can feed more than one r
 - rebuilding QGIS;
 - requiring QGIS Desktop operation;
 - tying Rasta to a single viewer;
+- owning router/mobile delivery compatibility;
 - rewriting the proven TPKX converter without a verified defect;
 - exposing operator choices that automation can make safely;
 - displaying fake progress percentages;
