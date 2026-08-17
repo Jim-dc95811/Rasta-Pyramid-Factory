@@ -4,7 +4,7 @@
 
 **Turn giant raster images into smooth multiscale tile pyramids without manually operating QGIS.**
 
-![System architecture](https://raw.githubusercontent.com/Jim-dc95811/Map-Fountain/main/docs/ChatGPT%20Image%20Aug%2016%2C%202026%2C%2007_11_25%20PM.png)
+![ArcGIS Earth Systems — router-only Map Fountain architecture](https://raw.githubusercontent.com/Jim-dc95811/Map-Fountain/main/docs/map_fountain_router_architecture_2026-08-17.svg)
 
 Rasta Pyramid Factory is a Windows-first raster manufacturing tool built around **QGIS 3.44.9 as a headless rendering engine**. Give it a very large flat image or a genuinely georeferenced raster and it manufactures a verified raster pyramid as **MBTiles, TPKX, or both**.
 
@@ -187,13 +187,13 @@ The internal rule remains reproducible:
 
 Placement has no effect on the source pixels or pyramid detail. It simply gives GIS tile machinery a deterministic projected rectangle to work with.
 
-## Relationship to ArcGIS Earth Mobile / Map Fountain
+## Relationship to ArcGIS Earth / Map Fountain
 
 Rasta itself remains a raster-manufacturing project, not a viewer project.
 
-However, its **MBTiles output is a first-class product**. During Offline GeoStack development on 2026-08-16, large MBTiles were live-served over a private USB-tether HTTPS WMTS path into ArcGIS Earth Mobile. A large Lago panorama displayed smoothly on Android.
+Its **MBTiles and TPKX outputs are first-class products**. On 2026-08-17, the router-only Map Fountain architecture was live-proven with a native production-scale TPKX on USB SSD attached to a GL.iNet Flint 2. ArcGIS Earth opened that package directly through Samba over Wi-Fi and rendered it successfully.
 
-That downstream proof reinforces the reason Rasta exposes MBTiles separately from TPKX: the same manufactured pyramid can feed different runtime ecosystems.
+That downstream proof reinforces the value of manufacturing clean native products: the field router does not need to rerender or understand them.
 
 ## Requirements
 
