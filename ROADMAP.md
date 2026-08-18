@@ -2,25 +2,59 @@
 
 ## Current state
 
-**Automated v0.1.2 architecture: LIVE-PROVEN.**
+**v0.1.3 TEST is the current LIVE-PROVEN baseline.**
 
-**v0.1.3 TEST: LIVE-PROVEN** for automatic flat-image manufacture, Atlantic synthetic parking, long-stage heartbeat, verified TPKX publication, and ArcGIS Earth display.
+It is live-proven for automatic flat-image manufacture, Atlantic synthetic parking, long-stage heartbeat, verified TPKX publication, and ArcGIS Earth display across multiple large city-image workloads.
 
-The automated path has crossed gigapixel-class city imagery:
+Gigapixel-class proofs include:
 
 - ✅ 63,000 × 18,589 / ~1.17-billion-pixel London JPEG
 - ✅ 62,141 × 14,606 / ~908-million-pixel Barcelona JPEG
 - ✅ 20+ minute long-build heartbeat observed live
 - ✅ deep-navigation behavior accepted in ArcGIS Earth
 
-## Remaining v0.1.3 hardening gates
+---
 
-1. Test cancellation during raster preparation and QGIS rendering.
-2. Test MBTiles-only output directly in the Rasta GUI.
-3. Test Both output directly in the Rasta GUI.
-4. Exercise at least one genuinely georeferenced raster through AUTO mode.
-5. Exercise a very large TIFF/BigTIFF source through the automatic path.
-6. Add conservative disk-space preflight before truly enormous staging jobs.
+## v0.1.4 TEST — separate acceptance boundary
+
+`Rasta_Pyramid_Factory_v0_1_4_TEST` was built from the v0.1.3 live-proven core.
+
+It changed output selection to three independent choices:
+
+```text
+TPKX
+MBTiles
+REST
+```
+
+Any one, any two, or all three may be selected.
+
+Status:
+
+- selection logic: **BUILT / SELF-TESTED**;
+- REST converter branch: **BUILT / SELF-TESTED**;
+- real end-to-end v0.1.4 Factory acceptance: **PENDING**;
+- REST output on real intended mobile target: **PENDING**.
+
+The REST branch came from the Map Fountain / Static REST WMTS exploration. Do not let that experimental downstream output redefine Rasta's core mission.
+
+---
+
+## Core hardening gates
+
+Prioritize work that strengthens Rasta as a general raster-pyramid factory:
+
+1. cancellation during raster preparation and QGIS rendering;
+2. MBTiles-only output on the real GUI target;
+3. TPKX + MBTiles combination on the real GUI target;
+4. at least one genuinely georeferenced raster through the automatic path;
+5. very large TIFF/BigTIFF automatic specimen;
+6. conservative disk-space preflight before truly enormous staging jobs;
+7. clear source/output byte-count reporting.
+
+REST-specific work stays lower priority unless a real deployment path reopens the need.
+
+---
 
 ## Source-screening rule for demonstrations
 
@@ -37,47 +71,51 @@ Before a source is presented as a serious Rasta demo candidate, verify:
 - source format/compression;
 - reuse rights.
 
-For visual “hawk dive” demonstrations, dense daylight cityscapes are especially effective because detail is distributed across the frame.
+For visual “hawk dive” demonstrations, dense daylight cityscapes are especially effective because useful detail is distributed across the frame.
 
-## Near-term release candidates
+---
 
-- automatic conservative disk-space preflight for giant staging rasters and output products;
-- smarter automatic max-zoom recommendation based on actual source pixel scale and useful oversampling policy;
+## Near-term Rasta candidates
+
+- conservative disk-space preflight for giant staging rasters and output products;
+- smarter max-zoom recommendation based on actual source pixel scale and useful oversampling policy;
 - optional JPEG tile output for photographic sources where size matters more than lossless PNG;
-- show source pixel type, band count, compression, and georeferencing summary in an Advanced information panel;
-- show a rough output-size warning based on pixel dimensions / tile count rather than source megabytes;
+- source pixel type / band count / compression / georeferencing summary in an Advanced information panel;
+- rough output-size warning based on pixel dimensions / tile count rather than source megabytes;
 - controlled tests with BigTIFF, GeoTIFF mosaics, historical scans, scientific rasters, and drone imagery;
-- optional command-line / batch mode after the GUI baseline is accepted.
+- optional command-line / batch mode only after the GUI baseline is accepted.
 
-## Viewer / deployment demonstrations
+---
 
-Rasta is a manufacturing project. It produces native raster pyramids as **MBTiles, TPKX, or Both** and does not own the field delivery hardware.
+## Deployment relationship
 
-The current downstream Map Fountain architecture is router-only and has been LIVE-PROVEN on Windows ArcGIS Earth:
+Rasta is a manufacturing project. It should not own field-delivery hardware.
 
-```text
-Rasta / Factory native TPKX
-→ USB SSD
-→ GL.iNet Flint 2
-→ Samba / SMB
-→ private Wi-Fi
-→ ArcGIS Earth Windows
-```
+The project family now separates roles:
 
-A production-scale native TPKX remained on the router-attached SSD while ArcGIS Earth opened and rendered it over Wi-Fi.
+- **Offline GeoStack** — master TPKX/map-manufacturing and field-mapping architecture.
+- **Map Fountain** — live-proven router/storage experiments, now parked from the primary personal-phone path.
+- **Android Field Maps + ArcGIS Earth** — current personal-phone / microSD deployment.
+- **Rasta** — giant-raster/deep-zoom pyramid manufacturing.
 
-That proof reinforces Rasta's core design: manufacture clean native products once; do not force the field appliance to understand or rerender them.
+### SD-card opportunity
 
-**ArcGIS Earth Mobile on the router-only architecture is a Map Fountain acceptance problem, not a Rasta manufacturing problem.**
+If a field user's card has spare capacity, Rasta products can provide useful deep-zoom cityscapes, historical maps, specialty scans, or other single-raster reference material.
+
+That is a downstream use, not a reason to change Rasta's manufacturing core.
+
+---
 
 ## Public / community
 
-- Maintain the dedicated `Rasta-Pyramid-Factory` repository as the living technical and plain-language record.
-- Keep the canonical Factory / PC / Android router-only flowchart at the top of the repository.
-- Preserve the Montreal, Frankfurt, London, Barcelona, and Tower Bridge evidence.
-- Publish a short screen recording showing whole-scene → deep-detail navigation.
-- Document performance comparison between direct giant-image random access and staged tiled-raster intake.
-- Keep the relationship to Offline GeoStack and Map Fountain clear without making Rasta depend on either runtime architecture.
+- maintain the dedicated `Rasta-Pyramid-Factory` repository as the living technical and plain-language record;
+- keep v0.1.3 LIVE-PROVEN status distinct from v0.1.4 SELF-TESTED status;
+- preserve Montreal, Frankfurt, London, Barcelona, and Tower Bridge evidence;
+- publish a short screen recording showing whole-scene → deep-detail navigation;
+- document performance comparison between direct giant-image random access and staged tiled-raster intake;
+- keep the relationship to Offline GeoStack, Map Fountain, and Android deployment clear without making Rasta depend on any runtime architecture.
+
+---
 
 ## Non-goals
 
@@ -90,4 +128,9 @@ That proof reinforces Rasta's core design: manufacture clean native products onc
 - rewriting the proven TPKX converter without a verified defect;
 - exposing operator choices that automation can make safely;
 - displaying fake progress percentages;
-- claiming that source file megabytes predict finished pyramid size.
+- claiming source file megabytes predict finished pyramid size;
+- treating the v0.1.4 REST experiment as live-proven before the target passes it.
+
+## Governing rule
+
+> **Rasta manufactures the pyramid. Deployment belongs downstream.**
