@@ -1,4 +1,31 @@
-# Changelog
+# Rasta Pyramid Factory Changelog
+
+## 2026-08-18 — deployment separation clarified
+
+- Kept **v0.1.3 TEST** as the current LIVE-PROVEN Rasta baseline.
+- Kept **v0.1.4 TEST** as BUILT / SELF-TESTED until its real target acceptance is completed.
+- Repositioned Map Fountain as LIVE-PROVEN / PARKED from the primary personal-phone deployment path.
+- Recorded the new sibling deployment repository: `Android-Field-Maps-and-ArcGIS-Earth-`.
+- Clarified that Rasta manufactures pyramids and does not own router/mobile delivery architecture.
+- Added the downstream idea that spare microSD capacity can optionally carry Rasta-generated deep-zoom cityscapes, historical maps, specialty scans, and other single-raster pyramids.
+
+## v0.1.4 TEST — 2026-08-17 — BUILT / SELF-TESTED
+
+- Built from the v0.1.3 TEST LIVE-PROVEN baseline.
+- Replaced the mutually exclusive MBTiles / TPKX / Both radio controls with three independent output checkboxes:
+  - TPKX
+  - MBTiles
+  - REST
+- One run may publish any one output, any pair, or all three.
+- QGIS renders the MBTiles pyramid once. TPKX and REST branch from that same verified temporary MBTiles.
+- Added `MBTiles_to_REST_v0_1_0.py`.
+- REST output writes the tile folder directly to the selected destination rather than creating a second expanded copy.
+- Added configurable REST router HTTPS root.
+- REST output writes `WMTSCapabilities.xml`, `PHONE_URL.txt`, and `BUILD_REPORT.txt`.
+- Added standard-library-only REST branch self-test.
+- v0.1.3 remains the LIVE-PROVEN baseline until v0.1.4 crosses a real Factory acceptance run.
+
+---
 
 ## 2026-08-16 — gigapixel / deep-navigation acceptance expansion
 
