@@ -6,11 +6,15 @@ If coming to this project cold, establish the following before changing code.
 
 Rasta Pyramid Factory is an independent sibling project created from a capability discovered during Offline GeoStack development.
 
-Its job is **general raster-pyramid manufacturing**, not wildfire mapping, GNSS, PRAVE, or incident operations.
+Its job is **general raster-pyramid manufacturing**, not wildfire mapping, GNSS, PRAVE, incident operations, router serving, or Android deployment.
 
-Rasta’s practical value is the conversion of a large monolithic raster into a multiscale tile pyramid that a viewer can navigate continuously. The human experience is often described as a **hawk dive**: scan the whole scene, notice something, descend toward it, and let progressively finer real source detail appear without manually changing layers.
+Rasta's practical value is the conversion of a large monolithic raster into a multiscale tile pyramid that a viewer can navigate continuously. The human experience is often described as a **hawk dive**: scan the whole scene, notice something, descend toward it, and let progressively finer real source detail appear without manually changing layers.
 
-## Proven baseline
+---
+
+## Version truth
+
+### v0.1.3 TEST — LIVE-PROVEN baseline
 
 - Manual giant flat raster → QGIS MBTiles → TPKX → ArcGIS Earth: **LIVE-PROVEN**.
 - Rasta v0.1.2 automated 29,684 × 7,620 Montreal PNG → 13,381 tiles → 52 bundles → TPKX → ArcGIS Earth: **LIVE-PROVEN**.
@@ -20,12 +24,39 @@ Rasta’s practical value is the conversion of a large monolithic raster into a 
 - Tibidabo / Barcelona, 62,141 × 14,606 / ~908 million pixels → 52,482 tiles → 30 bundles → 0:20:40 → ArcGIS Earth: **LIVE-PROVEN**.
 - 20+ minute heartbeat / elapsed-time behavior: **LIVE-PROVEN**.
 
+### v0.1.4 TEST — BUILT / SELF-TESTED
+
+`Rasta_Pyramid_Factory_v0_1_4_TEST` changed finished-product selection to three independent checkboxes:
+
+```text
+TPKX
+MBTiles
+REST
+```
+
+Any one, any two, or all three may be selected.
+
+The REST branch converts the verified MBTiles into the Static REST WMTS-compatible directory form explored for Map Fountain.
+
+Status:
+
+- output-selection logic: BUILT / SELF-TESTED;
+- REST converter branch: BUILT / SELF-TESTED;
+- full real-target v0.1.4 acceptance: NOT YET LIVE-PROVEN;
+- REST mobile acceptance from Rasta v0.1.4: NOT YET LIVE-PROVEN.
+
+Do not silently promote v0.1.4 over v0.1.3.
+
+---
+
 ## Important human-observed results
 
 - London Eye deep zoom resolved individual people inside observation pods.
 - Barcelona demonstrated useful detail distributed across the whole city rather than concentrated on one landmark.
 - Smooth neighboring pyramid levels make the viewer feel like movement through one visual space rather than manual layer switching.
 - The pyramid does not invent detail; it exposes source detail at useful viewing scales.
+
+---
 
 ## Output-size rule
 
@@ -43,6 +74,31 @@ Screen source candidates by:
 
 For public demonstrations, dense daylight cityscapes have been especially effective because recognizable fine detail is spread across the frame.
 
+---
+
+## Deployment relationship changed
+
+Map Fountain proved router/storage delivery on both Windows and Android, but is now **PROVEN / PARKED** from the primary personal-phone path.
+
+The current personal-phone deployment work is:
+
+```text
+TPKX
+→ microSD
+→ Android
+→ ArcGIS Field Maps / ArcGIS Earth
+```
+
+and lives in:
+
+`Jim-dc95811/Android-Field-Maps-and-ArcGIS-Earth-`
+
+Rasta does not own that workflow.
+
+A useful downstream possibility is to fill spare SD-card capacity with Rasta-generated deep-zoom imagery, historical maps, specialty scans, or other large single-raster pyramids. Treat that as optional deployment use, not Rasta core architecture.
+
+---
+
 ## Do not regress
 
 - Do not require ordinary users to operate QGIS Desktop.
@@ -55,19 +111,10 @@ For public demonstrations, dense daylight cityscapes have been especially effect
 - Do not call QGIS metatile/work counts final tile counts.
 - Do not make Rasta dependent on ArcGIS Earth; MBTiles is a first-class output.
 - Do not recommend a giant demo image without first verifying its actual pixel dimensions.
+- Do not make Rasta dependent on Map Fountain or the Android deployment architecture.
+- Do not label v0.1.4 REST work LIVE-PROVEN merely because the converter self-test passes.
 
-## Relationship to Map Fountain
-
-Offline GeoStack subsequently proved a local Android deployment path:
-
-```text
-MBTiles
-→ local HTTPS WMTS
-→ Android USB tether
-→ ArcGIS Earth Mobile
-```
-
-Three substantial MBTiles were displayed, including the large Lago panorama. This is useful downstream validation of MBTiles as a first-class Rasta output, but Map Fountain is not part of Rasta’s core manufacturing responsibility.
+---
 
 ## Frozen environment
 
@@ -79,23 +126,48 @@ Three substantial MBTiles were displayed, including the large Lago panorama. Thi
 - antialiasing ON
 - metatile 4
 
-## Remaining v0.1.3 release gates
+---
+
+## Current hardening priorities
+
+Strengthen the general pyramid factory before spending effort on downstream REST experiments:
 
 - cancellation during preparation / QGIS rendering;
-- MBTiles-only output through Rasta GUI;
-- Both output through Rasta GUI;
-- genuinely georeferenced AUTO specimen;
+- MBTiles-only output on the real GUI target;
+- TPKX + MBTiles combination on the real GUI target;
+- genuinely georeferenced automatic specimen;
 - very large TIFF/BigTIFF automatic specimen;
-- conservative disk-space preflight.
+- conservative disk-space preflight;
+- honest source/output size reporting.
+
+---
+
+## Four-project family
+
+1. Offline GeoStack — master field mapping / TPKX manufacturing.
+2. Rasta Pyramid Factory — general giant-raster pyramid manufacturing.
+3. Map Fountain — proven router/storage experiments; parked reference / possible future Starlink NAS.
+4. Android Field Maps + ArcGIS Earth — personal-phone / microSD deployment.
+
+Keep these roles separate.
+
+---
 
 ## Cold-start reading order
 
 1. `README.md`
-2. `docs/ACCEPTANCE_RECORD.md`
-3. `docs/GIGAPIXEL_AND_OUTPUT_SIZE.md`
-4. `docs/TECHNICAL_ARCHITECTURE.md`
-5. `CHANGELOG.md`
-6. `ROADMAP.md`
-7. newest commits / issues
+2. this file
+3. `docs/ACCEPTANCE_RECORD.md`
+4. `docs/GIGAPIXEL_AND_OUTPUT_SIZE.md`
+5. `docs/TECHNICAL_ARCHITECTURE.md`
+6. `CHANGELOG.md`
+7. `ROADMAP.md`
+8. newest commits / issues
 
 Report the current status before changing behavior.
+
+---
+
+## Governing principle
+
+> **Rasta manufactures the pyramid. Do not let downstream experiments redefine the factory's core.**
