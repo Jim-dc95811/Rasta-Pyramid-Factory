@@ -10,6 +10,12 @@
 
 **Keywords:** raster pyramid, image pyramid, deep zoom, gigapixel, QGIS, MBTiles, TPKX, ArcGIS Earth, georeferenced raster, GeoTIFF, panorama, orthomosaic, aerial imagery, multiscale raster, offline imagery
 
+### Where this fits in the larger journey
+
+Rasta grew from a cross-domain question: **could mature GIS pyramid machinery be used for giant ordinary images without pretending those images were real geography?** The answer became deterministic synthetic display space for flat images, preserved real georeferencing for true georasters, and one headless QGIS manufacturing path for both.
+
+That bridge is documented in **[The Bridges We Had to Build](https://github.com/Jim-dc95811/Offline-GeoStack/blob/main/docs/THE_BRIDGES_WE_HAD_TO_BUILD.md)**. The wider firefighter/dispatch/human-AI project story is in **[The Journey of Ideas](https://github.com/Jim-dc95811/Offline-GeoStack/blob/main/docs/JOURNEY_OF_IDEAS.md)**.
+
 ![Rasta Pyramid Factory v0.1.3 live proof](docs/images/rasta_v0_1_3_live_proof.jpg)
 
 ---
@@ -206,6 +212,8 @@ Rasta manufactures raster pyramids. It does **not** own field-delivery hardware 
 
 Finished Rasta products may ride on local storage when useful—for example cityscapes, historical scans, specialty imagery, drone orthomosaics, or other large visual references—but deployment belongs downstream.
 
+One downstream use is training: deep, smooth access to large imagery can support the project's **Wildland Imagery University** concept when the source material is appropriate. The training branch lives in the deployment repository rather than inside Rasta itself.
+
 ---
 
 ## Four-project family
@@ -213,7 +221,7 @@ Finished Rasta products may ride on local storage when useful—for example city
 1. **[Offline GeoStack](https://github.com/Jim-dc95811/Offline-GeoStack)** — master map manufacturing + field-system integration.
 2. **Rasta Pyramid Factory** — giant-raster / deep-zoom pyramid manufacturing.
 3. **[Map Fountain](https://github.com/Jim-dc95811/Map-Fountain)** — LIVE-PROVEN shared-storage/network delivery evidence; currently parked from the normal personal-phone path.
-4. **[Android Field Maps + ArcGIS Earth](https://github.com/Jim-dc95811/Android-Field-Maps-and-ArcGIS-Earth-)** — deployment to the user: Android offline maps + Windows ArcGIS Earth field features.
+4. **[Android Field Maps + ArcGIS Earth](https://github.com/Jim-dc95811/Android-Field-Maps-and-ArcGIS-Earth-)** — deployment to the user: Android offline maps + Windows ArcGIS Earth field features + imagery training.
 
 ---
 
@@ -227,6 +235,8 @@ Finished Rasta products may ride on local storage when useful—for example city
 - [AI / maintainer restart note](docs/AI_CONTINUITY_RESTART_NOTE.md)
 - [Roadmap](ROADMAP.md)
 - [Changelog](CHANGELOG.md)
+- [The Journey of Ideas](https://github.com/Jim-dc95811/Offline-GeoStack/blob/main/docs/JOURNEY_OF_IDEAS.md)
+- [The Bridges We Had to Build](https://github.com/Jim-dc95811/Offline-GeoStack/blob/main/docs/THE_BRIDGES_WE_HAD_TO_BUILD.md)
 
 ---
 
