@@ -1,6 +1,6 @@
 # Rasta Pyramid Factory
 
-## Giant raster → smooth multiscale pyramid
+## Giant raster -> smooth multiscale pyramid
 
 **Turn very large flat images and georeferenced rasters into verified MBTiles / TPKX pyramids without manually operating QGIS.**
 
@@ -8,61 +8,56 @@
 
 > **See the whole scene like a hawk. Dive into any detail that catches your eye.**
 
-**Keywords:** raster pyramid, image pyramid, deep zoom, gigapixel, QGIS, MBTiles, TPKX, ArcGIS Earth, georeferenced raster, GeoTIFF, panorama, orthomosaic, aerial imagery, multiscale raster, offline imagery
-
-### Where this fits in the larger journey
-
-Rasta grew from a cross-domain question: **could mature GIS pyramid machinery be used for giant ordinary images without pretending those images were real geography?** The answer became deterministic synthetic display space for flat images, preserved real georeferencing for true georasters, and one headless QGIS manufacturing path for both.
-
-That bridge is documented in **[The Bridges We Had to Build](https://github.com/Jim-dc95811/Offline-GeoStack/blob/main/docs/THE_BRIDGES_WE_HAD_TO_BUILD.md)**. The wider firefighter/dispatch/human-AI project story is in **[The Journey of Ideas](https://github.com/Jim-dc95811/Offline-GeoStack/blob/main/docs/JOURNEY_OF_IDEAS.md)**.
-
-![Rasta Pyramid Factory v0.1.3 live proof](docs/images/rasta_v0_1_3_live_proof.jpg)
-
 ---
 
 ## Current version truth
 
 ### v0.1.3 TEST — LIVE-PROVEN core
 
-The current live-proven Rasta baseline remains **v0.1.3**:
+Rasta v0.1.3 remains **LIVE-PROVEN** for:
 
 - automatic flat-image / georaster inspection;
 - tiled staging + overviews for giant flat images;
-- headless QGIS 3.44.9 raster-pyramid manufacturing;
+- headless QGIS 3.44.9 pyramid manufacturing;
 - verified raster MBTiles;
-- frozen MBTiles → Compact Cache V2 / TPKX converter;
 - deterministic synthetic placement for ordinary flat images;
-- long-stage heartbeat / elapsed-time behavior;
-- live ArcGIS Earth acceptance across multiple large city images.
+- long-build heartbeat;
+- large/gigapixel workloads;
+- TPKX output rendered successfully in **ArcGIS Earth**.
 
-### v0.1.4 TEST — historical output-selection experiment
+### Important TPKX compatibility boundary — 2026-08-20
 
-A later `Rasta_Pyramid_Factory_v0_1_4_TEST` branch added independent output choices for:
+A downstream ArcGIS Field Maps control test found a verified defect in the historical MBTiles -> TPKX converter lineage that Rasta v0.1.3 inherited.
 
-```text
-TPKX
-MBTiles
-REST
-```
+Using the same physical-card/Designer workflow, Field Maps:
 
-Its selector/converter logic is **BUILT / SELF-TESTED**, but the REST branch came from the now-parked Map Fountain experiment and is **not the current Rasta direction**.
+- rejected a project converter-built TPKX;
+- accepted Esri's official `Usa.tpkx`.
 
-Do not describe v0.1.4 REST output as LIVE-PROVEN.
+Therefore Rasta's existing TPKX output remains **ArcGIS Earth-proven**, but **Field Maps compatibility is not approved** until the Esri-canonical converter repair is proven and integrated.
+
+Rasta's MBTiles manufacturing and giant-raster core are not invalidated by this finding.
+
+See the master engineering record:
+
+- [Offline GeoStack — TPKX / Field Maps Conformance](https://github.com/Jim-dc95811/Offline-GeoStack/blob/main/docs/TPKX_FIELD_MAPS_CONFORMANCE_2026-08-20.md)
 
 ---
 
-## Status
+## Current status
 
 | Capability | Status |
 | --- | --- |
-| Arbitrary raster → MBTiles → TPKX architecture | ✅ **LIVE-PROVEN** |
 | Automated giant-raster processing | ✅ **LIVE-PROVEN** |
 | Headless QGIS 3.44.9 pyramid engine | ✅ **LIVE-PROVEN** |
-| MBTiles → Compact Cache V2 / TPKX converter | ✅ **LIVE-PROVEN** |
+| Raster -> verified MBTiles | ✅ **LIVE-PROVEN** |
+| Historical MBTiles -> TPKX -> ArcGIS Earth | ✅ **LIVE-PROVEN** |
+| Historical Rasta TPKX -> Field Maps | ❌ **NOT APPROVED — converter lineage failed Field Maps** |
+| Esri-canonical replacement converter | 🟡 **BUILT / SELF-TESTED IN OFFLINE GEOSTACK; FIELD MAPS PENDING** |
 | Gigapixel-class deep navigation | ✅ **LIVE-PROVEN** |
 | v0.1.3 synthetic placement + heartbeat | ✅ **LIVE-PROVEN** |
 | v0.1.4 TPKX / MBTiles / REST selector | 🟡 **BUILT / SELF-TESTED HISTORICAL TEST BRANCH** |
-| REST output on real mobile target | 🟡 **NOT LIVE-PROVEN / PARKED WITH MAP FOUNTAIN** |
+| REST output | ⏸️ **PARKED WITH MAP FOUNTAIN** |
 
 ---
 
@@ -75,7 +70,7 @@ Do not describe v0.1.4 REST output as LIVE-PROVEN.
 4. BUILD RASTER PYRAMID
 ```
 
-Rasta distinguishes ordinary flat imagery from genuinely georeferenced raster input automatically. The normal operator does not need a CRS-mode selector or a manual Georeferencer workflow.
+Rasta distinguishes ordinary flat imagery from genuinely georeferenced raster input automatically. The normal operator does not need a CRS-mode selector or manual Georeferencer workflow.
 
 The original source raster is not modified.
 
@@ -85,38 +80,26 @@ The original source raster is not modified.
 
 ```text
 giant source raster
-→ QGIS/GDAL inspection
-→ real georaster? ─ yes → preserve real georeferencing
-       │
+-> QGIS/GDAL inspection
+-> real georaster? -> preserve real georeferencing
+       |
        no
-       ↓
+       v
 synthetic display placement
-→ tiled working GeoTIFF + overviews
-→ QGIS 3.44.9 headless pyramid engine
-→ verified raster MBTiles
-       ├─ preserve MBTiles when selected
-       └─ Compact Cache V2 converter → TPKX
+-> tiled working GeoTIFF + overviews
+-> QGIS 3.44.9 headless pyramid engine
+-> verified raster MBTiles
+       |-- preserve MBTiles when selected
+       `-- TPKX converter -> TPKX
 ```
 
-The old v0.1.4 TEST branch additionally experimented with REST output. That branch is lineage, not the recommended current product story.
+### Current converter rule
 
----
+For ArcGIS Earth, the v0.1.3 historical TPKX output remains proven evidence.
 
-## Why the pyramid feels different
+For future production and any Field Maps claim, Rasta must adopt the replacement converter only after the Esri-canonical small specimen passes Field Maps.
 
-Rasta manufactures a true multiscale raster pyramid. The viewer moves continuously through neighboring resolution levels instead of manually switching between separate detail layers.
-
-```text
-whole scene
-→ something catches the eye
-→ dive toward it
-→ more source detail appears
-→ keep moving without losing context
-```
-
-The pyramid does **not** invent detail. It makes detail already present in the source practical to explore.
-
-A local pyramid also removes the need to wait on a network request for every new view.
+Do not rewrite the accepted v0.1.3 evidence package and pretend it was always the new converter.
 
 ---
 
@@ -124,65 +107,59 @@ A local pyramid also removes the need to wait on a network request for every new
 
 ### Montreal
 
-- 29,684 × 7,620 pixels
+- 29,684 x 7,620 pixels
 - 13,381 raster tiles
-- 52 Compact Cache V2 bundles
-- Z0–Z18
-- 0:05:04 elapsed
-- ArcGIS Earth: **PASS**
-
-![Montreal overview and deep-zoom live proof](docs/images/montreal_live_proof.jpg)
+- 52 bundles
+- Z0-Z18
+- 0:05:04
+- ArcGIS Earth: PASS
 
 ### London — gigapixel-class
 
 `Kings_reach_panorama_2.jpg`
 
-- 63,000 × 18,589 pixels
+- 63,000 x 18,589 pixels
 - approximately 1.17 billion source pixels
 - 67,619 final raster tiles
-- Z0–Z18
+- Z0-Z18
 - 30 bundles
-- 0:23:07 elapsed
-- Windows File Explorer TPKX size: **1,949,149 KB**
-- ArcGIS Earth: **PASS**
+- 0:23:07
+- Windows File Explorer TPKX size: 1,949,149 KB
+- ArcGIS Earth: PASS
 
-A deep dive toward the London Eye resolved individual people inside the observation pods.
+Deep navigation resolved individual people inside London Eye observation pods.
 
 ### Barcelona
 
-- 62,141 × 14,606 pixels
+- 62,141 x 14,606 pixels
 - approximately 908 million source pixels
 - 52,482 final tiles
-- Z0–Z18
+- Z0-Z18
 - 30 bundles
-- 0:20:40 elapsed
-- ArcGIS Earth: **PASS**
+- 0:20:40
+- ArcGIS Earth: PASS
 
 ### Tower Bridge
 
-- 15,287 × 7,643 pixels
+- 15,287 x 7,643 pixels
 - 6,976 tiles
-- Z0–Z18
+- Z0-Z18
 - 22 bundles
-- 0:02:18 elapsed
-- Windows File Explorer TPKX size: **294,910 KB**
-- ArcGIS Earth: **PASS**
+- 0:02:18
+- Windows File Explorer TPKX size: 294,910 KB
+- ArcGIS Earth: PASS
 
 ---
 
 ## Source-size lesson
 
-A source file’s compressed disk size is a poor predictor of pyramid size. Pixel dimensions, total pixel count, requested zoom range, scene complexity, and tile encoding matter much more.
-
-> **Do not judge the source by how many megabytes the file weighs. Judge it by what pixels are actually inside.**
-
-See [Gigapixel proof + output-size guidance](docs/GIGAPIXEL_AND_OUTPUT_SIZE.md).
+A source file's compressed disk size is a poor predictor of pyramid size. Pixel dimensions, total pixel count, scene complexity, zoom range, and encoding matter more.
 
 ---
 
 ## Synthetic placement for ordinary images
 
-A normal photograph has no honest geographic location. Rasta therefore labels its placement as **synthetic display space**, never as real geography.
+A normal photograph has no honest geographic location. Rasta labels its placement as **synthetic display space**.
 
 Current reproducible rule:
 
@@ -192,8 +169,6 @@ working CRS = EPSG:3857
 fixed synthetic Atlantic anchor near 30°N, 80°W
 ```
 
-Placement changes no source pixels. It simply gives GIS tile machinery a deterministic projected rectangle.
-
 ---
 
 ## Requirements
@@ -202,26 +177,24 @@ Placement changes no source pixels. It simply gives GIS tile machinery a determi
 - Python 3.14.5 64-bit
 - QGIS 3.44.9
 
-The normal GUI does not require the operator to open QGIS Desktop. Rasta launches the QGIS environment invisibly for rendering.
-
 ---
 
 ## Deployment boundary
 
-Rasta manufactures raster pyramids. It does **not** own field-delivery hardware or the normal user-deployment workflow.
+Rasta manufactures raster pyramids. It does not own field-delivery hardware or Field Maps compatibility policy.
 
-Finished Rasta products may ride on local storage when useful—for example cityscapes, historical scans, specialty imagery, drone orthomosaics, or other large visual references—but deployment belongs downstream.
+Deployment belongs downstream in the Android Field Maps + ArcGIS Earth repository.
 
-One downstream use is training: deep, smooth access to large imagery can support the project's **Wildland Imagery University** concept when the source material is appropriate. The training branch lives in the deployment repository rather than inside Rasta itself.
+The current converter repair belongs in Offline GeoStack, then propagates into Rasta after real-target proof.
 
 ---
 
 ## Four-project family
 
-1. **[Offline GeoStack](https://github.com/Jim-dc95811/Offline-GeoStack)** — master map manufacturing + field-system integration.
-2. **Rasta Pyramid Factory** — giant-raster / deep-zoom pyramid manufacturing.
-3. **[Map Fountain](https://github.com/Jim-dc95811/Map-Fountain)** — LIVE-PROVEN shared-storage/network delivery evidence; currently parked from the normal personal-phone path.
-4. **[Android Field Maps + ArcGIS Earth](https://github.com/Jim-dc95811/Android-Field-Maps-and-ArcGIS-Earth-)** — deployment to the user: Android offline maps + Windows ArcGIS Earth field features + imagery training.
+1. [Offline GeoStack](https://github.com/Jim-dc95811/Offline-GeoStack) — master manufacturing/integration + current TPKX conformance repair.
+2. **Rasta Pyramid Factory** — giant-raster/deep-zoom manufacturing.
+3. [Map Fountain](https://github.com/Jim-dc95811/Map-Fountain) — LIVE-PROVEN shared-storage/network reference; parked.
+4. [Android Field Maps + ArcGIS Earth](https://github.com/Jim-dc95811/Android-Field-Maps-and-ArcGIS-Earth-) — deployment and real Field Maps acceptance evidence.
 
 ---
 
@@ -235,17 +208,9 @@ One downstream use is training: deep, smooth access to large imagery can support
 - [AI / maintainer restart note](docs/AI_CONTINUITY_RESTART_NOTE.md)
 - [Roadmap](ROADMAP.md)
 - [Changelog](CHANGELOG.md)
-- [The Journey of Ideas](https://github.com/Jim-dc95811/Offline-GeoStack/blob/main/docs/JOURNEY_OF_IDEAS.md)
-- [The Bridges We Had to Build](https://github.com/Jim-dc95811/Offline-GeoStack/blob/main/docs/THE_BRIDGES_WE_HAD_TO_BUILD.md)
 
 ---
 
-## Licensing boundary
+## Governing rule
 
-Original Rasta software and documentation are provided under the MIT License unless a file states otherwise. That license does not grant rights to third-party source imagery or viewer software. Users remain responsible for the rights and terms governing whatever raster they feed into the Factory.
-
----
-
-# Rasta Pyramid Factory
-
-> **Take one giant image and give the viewer every useful scale before the user asks for it.**
+> **Rasta manufactures the pyramid. The real target decides compatibility. Do not let downstream deployment claims outrun evidence.**
