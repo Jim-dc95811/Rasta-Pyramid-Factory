@@ -4,115 +4,140 @@ If coming to this project cold, establish the following before changing code.
 
 ## Current truth
 
-Rasta Pyramid Factory is an independent sibling project created from a capability discovered during Offline GeoStack development.
+Rasta is an independent **general raster-pyramid manufacturing** project.
 
-Its job is **general raster-pyramid manufacturing**, not wildfire mapping, GNSS, PRAVE, incident operations, router serving, or Android deployment.
+Its core job remains converting large flat images and real georasters into verified multiscale MBTiles and, when selected, TPKX products.
 
-Rasta's practical value is the conversion of a large monolithic raster into a multiscale tile pyramid that a viewer can navigate continuously. The human experience is often described as a **hawk dive**: scan the whole scene, notice something, descend toward it, and let progressively finer real source detail appear without manually changing layers.
+### v0.1.3 TEST
+
+Still **LIVE-PROVEN** for:
+
+- giant flat-image automatic path;
+- tiled staging and overviews;
+- headless QGIS 3.44.9 manufacturing;
+- verified MBTiles;
+- synthetic Atlantic parking;
+- long-stage heartbeat;
+- London/Barcelona/Tower Bridge/Montreal workloads;
+- TPKX display in ArcGIS Earth.
 
 ---
 
-## Version truth
+## Critical compatibility update — 2026-08-20
 
-### v0.1.3 TEST — LIVE-PROVEN baseline
+A downstream ArcGIS Field Maps test exposed a verified defect in the historical MBTiles -> TPKX converter lineage used by Rasta v0.1.3.
 
-- Manual giant flat raster → QGIS MBTiles → TPKX → ArcGIS Earth: **LIVE-PROVEN**.
-- Rasta v0.1.2 automated 29,684 × 7,620 Montreal PNG → 13,381 tiles → 52 bundles → TPKX → ArcGIS Earth: **LIVE-PROVEN**.
-- Rasta v0.1.3 automatic flat-image manufacture + Atlantic synthetic parking + verified publication + ArcGIS Earth display: **LIVE-PROVEN**.
-- Tower Bridge 15,287 × 7,643 JPEG → 6,976 tiles → ArcGIS Earth: **LIVE-PROVEN**.
-- Kings Reach Panorama 2, 63,000 × 18,589 / ~1.17 billion pixels → 67,619 tiles → 30 bundles → 0:23:07 → ArcGIS Earth: **LIVE-PROVEN**.
-- Tibidabo / Barcelona, 62,141 × 14,606 / ~908 million pixels → 52,482 tiles → 30 bundles → 0:20:40 → ArcGIS Earth: **LIVE-PROVEN**.
-- 20+ minute heartbeat / elapsed-time behavior: **LIVE-PROVEN**.
-
-### v0.1.4 TEST — BUILT / SELF-TESTED
-
-`Rasta_Pyramid_Factory_v0_1_4_TEST` changed finished-product selection to three independent checkboxes:
+Control:
 
 ```text
-TPKX
-MBTiles
-REST
+project converter TPKX -> Field Maps REJECTED
+Esri official Usa.tpkx -> Field Maps ACCEPTED
 ```
 
-Any one, any two, or all three may be selected.
+This means:
 
-The REST branch converts the verified MBTiles into the Static REST WMTS-compatible directory form explored for Map Fountain.
+- do not claim existing Rasta TPKX is Field Maps-conformant;
+- do not erase v0.1.3 ArcGIS Earth evidence;
+- do not rewrite v0.1.3 in place;
+- wait for Offline GeoStack's Esri-canonical converter to pass Field Maps;
+- then integrate the accepted converter into a new Rasta test line.
 
-Status:
+Master record:
 
-- output-selection logic: BUILT / SELF-TESTED;
-- REST converter branch: BUILT / SELF-TESTED;
-- full real-target v0.1.4 acceptance: NOT YET LIVE-PROVEN;
-- REST mobile acceptance from Rasta v0.1.4: NOT YET LIVE-PROVEN.
-
-Do not silently promote v0.1.4 over v0.1.3.
+https://github.com/Jim-dc95811/Offline-GeoStack/blob/main/docs/TPKX_FIELD_MAPS_CONFORMANCE_2026-08-20.md
 
 ---
 
-## Important human-observed results
+## Upstream converter repair status
+
+`ESRI_CANONICAL_TPKX_TEST_v0_2_0` is **BUILT / SELF-TESTED — FIELD MAPS PENDING**.
+
+It copies Esri's canonical Web Mercator LOD values and metadata conventions rather than recalculating them.
+
+The next upstream gate is:
+
+```text
+small MBTiles
+-> canonical v0.2.0 converter
+-> small TPKX
+-> physical microSD
+-> Field Maps PASS
+```
+
+Do not adopt the replacement into Rasta before that real target pass.
+
+---
+
+## After upstream PASS
+
+Create a new Rasta test lineage that:
+
+1. replaces only the TPKX packaging stage with the accepted canonical converter;
+2. preserves the live-proven raster inspection/staging/QGIS/MBTiles core;
+3. runs regression/self-tests;
+4. reruns at least one known city specimen;
+5. confirms ArcGIS Earth still works;
+6. tests Field Maps only if Rasta is going to claim that downstream compatibility.
+
+Do not mutate or relabel the accepted v0.1.3 evidence package.
+
+---
+
+## v0.1.4 TEST
+
+The TPKX / MBTiles / REST selector branch remains BUILT / SELF-TESTED history.
+
+REST is parked with Map Fountain and is not the current priority.
+
+---
+
+## Human-observed Rasta results that remain valid
 
 - London Eye deep zoom resolved individual people inside observation pods.
-- Barcelona demonstrated useful detail distributed across the whole city rather than concentrated on one landmark.
-- Smooth neighboring pyramid levels make the viewer feel like movement through one visual space rather than manual layer switching.
-- The pyramid does not invent detail; it exposes source detail at useful viewing scales.
+- Barcelona showed useful detail distributed across the city.
+- Smooth pyramid levels support whole-scene -> deep-detail navigation.
+- The pyramid exposes source detail; it does not invent detail.
 
 ---
 
 ## Output-size rule
 
-Do **not** use source file megabytes as the primary predictor of Rasta output size.
+Do not use source file megabytes as the primary output-size predictor.
 
-A highly compressed JPEG can contain far more pixels than a much larger TIFF.
+Prioritize:
 
-Screen source candidates by:
-
-1. exact width × height;
+1. width x height;
 2. total pixel count;
-3. scene complexity / useful detail;
+3. scene complexity;
 4. source format/compression;
-5. requested zoom range.
-
-For public demonstrations, dense daylight cityscapes have been especially effective because recognizable fine detail is spread across the frame.
+5. zoom range.
 
 ---
 
-## Deployment relationship changed
+## Deployment relationship
 
-Map Fountain proved router/storage delivery on both Windows and Android, but is now **PROVEN / PARKED** from the primary personal-phone path.
+Rasta does not own Android deployment.
 
-The current personal-phone deployment work is:
+Current family roles:
 
-```text
-TPKX
-→ microSD
-→ Android
-→ ArcGIS Field Maps / ArcGIS Earth
-```
-
-and lives in:
-
-`Jim-dc95811/Android-Field-Maps-and-ArcGIS-Earth-`
-
-Rasta does not own that workflow.
-
-A useful downstream possibility is to fill spare SD-card capacity with Rasta-generated deep-zoom imagery, historical maps, specialty scans, or other large single-raster pyramids. Treat that as optional deployment use, not Rasta core architecture.
+- Offline GeoStack — master manufacturing/integration + TPKX conformance repair;
+- Rasta — giant-raster pyramid manufacturing;
+- Map Fountain — proven router/storage reference, parked;
+- Android Field Maps + ArcGIS Earth — real mobile deployment evidence.
 
 ---
 
 ## Do not regress
 
 - Do not require ordinary users to operate QGIS Desktop.
-- Do not restore the removed Auto/Flat/Geo choice block to the normal GUI without a proven need.
-- Do not random-read giant PNG/JPEG sources directly through thousands of QGIS tile requests; preserve the tiled staging + overview path.
-- Do not modify original source rasters.
-- Do not describe synthetic flat-image placement as real geography.
-- Do not casually rewrite the frozen MBTiles→TPKX converter.
-- Do not fake progress percentages. Use heartbeat/elapsed/stage when progress is unknowable.
-- Do not call QGIS metatile/work counts final tile counts.
-- Do not make Rasta dependent on ArcGIS Earth; MBTiles is a first-class output.
-- Do not recommend a giant demo image without first verifying its actual pixel dimensions.
-- Do not make Rasta dependent on Map Fountain or the Android deployment architecture.
-- Do not label v0.1.4 REST work LIVE-PROVEN merely because the converter self-test passes.
+- Do not random-read giant PNG/JPEG inputs through thousands of QGIS requests; preserve tiled staging + overviews.
+- Do not modify source rasters.
+- Do not describe synthetic placement as real geography.
+- Do not rewrite v0.1.3 history to hide the downstream converter defect.
+- Do not claim ArcGIS Earth acceptance proves Field Maps acceptance.
+- Do not adopt the new converter before Field Maps proves it.
+- Do not fake progress percentages.
+- Do not make Rasta dependent on Map Fountain or Field Maps.
 
 ---
 
@@ -130,44 +155,18 @@ A useful downstream possibility is to fill spare SD-card capacity with Rasta-gen
 
 ## Current hardening priorities
 
-Strengthen the general pyramid factory before spending effort on downstream REST experiments:
+After the upstream converter gate resolves:
 
-- cancellation during preparation / QGIS rendering;
-- MBTiles-only output on the real GUI target;
-- TPKX + MBTiles combination on the real GUI target;
-- genuinely georeferenced automatic specimen;
-- very large TIFF/BigTIFF automatic specimen;
-- conservative disk-space preflight;
+- cancellation during preparation/QGIS rendering;
+- MBTiles-only real GUI target;
+- TPKX + MBTiles combination target;
+- genuine georeferenced raster specimen;
+- very large TIFF/BigTIFF specimen;
+- disk-space preflight;
 - honest source/output size reporting.
-
----
-
-## Four-project family
-
-1. Offline GeoStack — master field mapping / TPKX manufacturing.
-2. Rasta Pyramid Factory — general giant-raster pyramid manufacturing.
-3. Map Fountain — proven router/storage experiments; parked reference / possible future Starlink NAS.
-4. Android Field Maps + ArcGIS Earth — personal-phone / microSD deployment.
-
-Keep these roles separate.
-
----
-
-## Cold-start reading order
-
-1. `README.md`
-2. this file
-3. `docs/ACCEPTANCE_RECORD.md`
-4. `docs/GIGAPIXEL_AND_OUTPUT_SIZE.md`
-5. `docs/TECHNICAL_ARCHITECTURE.md`
-6. `CHANGELOG.md`
-7. `ROADMAP.md`
-8. newest commits / issues
-
-Report the current status before changing behavior.
 
 ---
 
 ## Governing principle
 
-> **Rasta manufactures the pyramid. Do not let downstream experiments redefine the factory's core.**
+> **Rasta manufactures the pyramid. Preserve the proven core, and inherit compatibility claims only after the real target proves them.**
